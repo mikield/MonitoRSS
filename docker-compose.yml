@@ -7,7 +7,7 @@ services:
     image: ghcr.io/synzen/monitorss-bot-presence:main
     command: ["node", "dist/main.js"]
     env_file:
-      - ./.env.prod
+      - ./.env
 
   feed-requests-redis-cache:
     extends:
@@ -36,7 +36,7 @@ services:
     image: ghcr.io/synzen/monitorss-discord-rest-listener:main
     command: ["node", "build/app.js"]
     env_file:
-      - ./.env.prod
+      - ./.env
     environment:
       - NODE_ENV=production
 
@@ -47,7 +47,7 @@ services:
     image: ghcr.io/synzen/monitorss-feed-requests:main
     command: ["node", "dist/main.js"]
     env_file:
-      - ./.env.prod
+      - ./.env
     environment:
       - NODE_ENV=production
 
@@ -58,7 +58,7 @@ services:
     image: ghcr.io/synzen/monitorss-feed-requests:main
     command: "npm run migration:up"
     env_file:
-      - ./.env.prod
+      - ./.env
     environment:
       - NODE_ENV=production
 
@@ -69,7 +69,7 @@ services:
     image: ghcr.io/synzen/monitorss-user-feeds:main
     command: ["node", "dist/main.js"]
     env_file:
-      - ./.env.prod
+      - ./.env
     environment:
       - NODE_ENV=production
 
@@ -80,7 +80,7 @@ services:
     image: ghcr.io/synzen/monitorss-user-feeds:main
     command: "npm run migration:up"
     env_file:
-      - ./.env.prod
+      - ./.env
     environment:
       - NODE_ENV=production
 
@@ -91,7 +91,7 @@ services:
     image: ghcr.io/synzen/monitorss-monolith:main
     command: ["node", "dist/scripts/legacy-feed-bulk-converter.js"]
     env_file:
-      - ./.env.prod
+      - ./.env
     environment:
       - NODE_ENV=production
 
@@ -102,7 +102,7 @@ services:
     image: ghcr.io/synzen/monitorss-monolith:main
     command: ["node", "dist/scripts/schedule-emitter.js"]
     env_file:
-      - ./.env.prod
+      - ./.env
     environment:
       - NODE_ENV=production
 
@@ -116,7 +116,7 @@ services:
     ports:
       - "8000:8000"
     env_file:
-      - ./.env.prod
+      - ./.env
     environment:
       - BACKEND_API_NODE_ENV=local
       - BACKEND_API_PORT=8000
